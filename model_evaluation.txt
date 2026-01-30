@@ -1,0 +1,18 @@
+=== Model Evaluation ===
+
+Test Accuracy: 0.9901
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         Cat       0.99      0.99      0.99      1875
+         Dog       0.99      0.99      0.99      1875
+
+    accuracy                           0.99      3750
+   macro avg       0.99      0.99      0.99      3750
+weighted avg       0.99      0.99      0.99      3750
+
+
+Confusion Matrix:
+[[1854   21]
+ [  16 1859]]

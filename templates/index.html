@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dog vs Cat Classifier</title>
+    <style>
+        /* 1. Body and Layout */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2, #e0f7fa); 
+            color: #333;
+            padding: 20px 0;
+        }
+        
+        /* 2. Enhanced Container Styling (The Main Card) */
+        .container {
+            /* 👇 CHANGES FOR BIGGER BOX 👇 */
+            max-width: 850px; /* Increased Max Width as requested */
+            width: 90%;
+            padding: 80px; /* Increased Padding as requested */
+            /* 👆 CHANGES FOR BIGGER BOX 👆 */
+            
+            border: none;
+            border-radius: 20px; /* Thoda zyada rounded corners */
+            background: white;
+            /* Deeper shadow for a prominent 'pop-up' effect */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25); 
+            transition: all 0.4s ease;
+            margin: auto;
+        }
+        
+        /* 3. Header/Title Styling (Scaled up) */
+        h1 {
+            color: #00838f;
+            margin-bottom: 40px;
+            font-size: 3em; /* Title size increased */
+        }
+        
+        h3 {
+            color: #00acc1;
+            border-bottom: 2px solid #e0f7fa;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.5em; /* Option title size increased */
+        }
+
+        /* 4. Form and Input Styling (Scaled up) */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.1em; /* File input font size increased */
+        }
+
+        input[type="text"] {
+            width: 90%; /* Increased width for text input */
+            padding: 18px;
+            margin-bottom: 25px;
+            border: 1px solid #bdbdbd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 1.2em; /* Text input font size increased */
+        }
+
+        button[type="submit"] {
+            background: #00bcd4;
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 35px;
+            cursor: pointer;
+            font-size: 1.3em; /* Button font size increased */
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background: #0097a7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+        }
+
+        /* 5. Result and Image Display (Scaled up) */
+        img { 
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .result { 
+            font-size: 2em; /* Result text size increased */
+            font-weight: 700; 
+            color: #00838f; 
+            margin-top: 50px; 
+            padding: 20px;
+            border: 1px solid #e0f7fa;
+            border-radius: 10px;
+            background-color: #f4fcfd;
+        }
+
+        /* 6. Footer (Scaled up) */
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            color: #757575;
+            font-size: 1.1em; /* Footer font size increased */
+            background-color: rgba(255, 255, 255, 0.7);
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐕 Dog vs Cat Classifier 🐈</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <h3>Option 1: Upload Image</h3>
+            <input type="file" name="file" accept="image/*">
+            
+            <h3>Option 2: Image URL</h3>
+            <input type="text" name="url" placeholder="Paste image URL here">
+            
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if image_path %}
+            <img src="{{ image_path }}" alt="Uploaded Image">
+        {% endif %}
+
+        {% if prediction %}
+            <div class="result">
+                Result: <strong>{{ prediction }}</strong>
+                {% if confidence %}
+                    <br>Confidence: {{ confidence }}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="footer">
+        © 2025 AI Image Classification Project | Powered by a Convolutional Neural Network
+    </div>
+</body>
+</html>
